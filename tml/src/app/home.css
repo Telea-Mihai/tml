@@ -10,6 +10,73 @@
     width: 100%;
     background-color: #F2E9D0;
     min-height: 100vh;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Menu .title{
+    font-family: var(--font-anonymous-pro), monospace;
+    font-weight: bold;
+    font-size: 5rem;
+}
+
+.Menu .subTitle{
+    font-family: var(--font-anonymous-pro), monospace;
+    font-weight: normal;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.Menu .Category{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.Category h1{
+    font-weight: bold;
+    font-size: xx-large;
+    text-decoration: underline;
+    width: fit-content;
+    padding-inline: 1rem;
+}
+
+.Category a:hover::before{
+    content:">";
+}
+
+.Category a.selected::after{
+    content:"";
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    background-color:black;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    vertical-align: -6px;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    99% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.Category a{
+    margin-left: 5rem;
+    font-size: x-large;
+    text-decoration: underline;
+}
+
+.Category h1.selected{
+    
+    color: white;
+    background-color: #000000;
 }
 
 .Machine{
@@ -28,6 +95,13 @@
     height: 100%;
     background-color: #F1F1F1;
     border-left: 1rem solid #A9A4A4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: x-large;
+    gap:2rem;
 }
 
 .Machine .Lower{
