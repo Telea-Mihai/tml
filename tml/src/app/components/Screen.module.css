@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    color:white;
+    font-family: var(--font-ibm-plex-mono);
+}

@@ -43,11 +43,11 @@
     padding-inline: 1rem;
 }
 
-.Category a:hover::before{
+.Category button:hover::before{
     content:">";
 }
 
-.Category a.selected::after{
+.Category button.selected::after{
     content:"";
     display: inline-block;
     height: 25px;
@@ -67,10 +67,11 @@
     100% { opacity: 1; }
 }
 
-.Category a{
+.Category button{
     margin-left: 5rem;
     font-size: x-large;
     text-decoration: underline;
+    width: fit-content;
 }
 
 .Category h1.selected{

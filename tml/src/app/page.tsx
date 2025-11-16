@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Screen from "./components/Screen";
 import "./home.css";
 
 export default function Home() {
@@ -7,23 +7,23 @@ export default function Home() {
       <div className="Menu">
         <div>
           <h1 className="title">&gt;Menu</h1>
-          <h2 className="subTitle">Please make a selection:</h2>
+          <h2 className="subTitle">Please make button selection:</h2>
         </div>
         <div>
           <div className="Category">
             <h1 className="selected">Projects</h1>
-            <a className="selected">Web</a>
-            <a>Software/Games</a>
-            <a>Hardware</a>
-            <a>Other</a>
+            <button className="selected">Web</button>
+            <button>Software/Games</button>
+            <button>Hardware</button>
+            <button>Other</button>
           </div>
           <div className="Category">
             <h1>About me</h1>
-            <a>Who am I?</a>
-            <a>Experience</a>
-            <a>Education</a>
-            <a>Achievements</a>
-            <a>Contact</a>
+            <button>Who am I?</button>
+            <button>Experience</button>
+            <button>Education</button>
+            <button>Achievements</button>
+            <button>Contact</button>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
         <div className="Lower">
           <div className="Screen">
-
+            <Screen sum={null}/>
           </div>
         </div>
       </div>
