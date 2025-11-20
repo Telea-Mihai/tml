@@ -3,6 +3,7 @@
 import {db} from '@/db/db';
 import { project } from '@/db/schema/project';
 import { eq } from 'drizzle-orm';
+import { ButtonHTMLAttributes } from 'react';
 
 export type Project = typeof project.$inferSelect;
 
@@ -20,4 +21,4 @@ export async function getProjectsByIds(ids: number[]): Promise<Project[] | null>
         }
     }
     return projects.length > 0 ? projects : null;
-}
+}            

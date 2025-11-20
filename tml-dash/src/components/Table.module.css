@@ -1,0 +1,174 @@
+/* Shared table styles */
+.tableContainer {
+  overflow-x: auto;
+}
+
+.table {
+  min-width: 100%;
+  background: #000000;
+  border: 2px dotted #1f2937;
+}
+
+.tableHead {
+  background: #000000;
+  border-bottom: 2px dotted #374151;
+}
+
+.tableHeader {
+  padding: 0.75rem 1.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableHeaderRight {
+  text-align: right;
+}
+
+.tableBody {
+  border-top: 2px dotted #1f2937;
+}
+
+.tableRow {
+  transition: background-color 0.2s;
+}
+
+.tableRow:not(:last-child) {
+  border-bottom: 2px dotted #1f2937;
+}
+
+.tableRow:hover {
+  background: #111827;
+}
+
+.tableCell {
+  padding: 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+.tableCellWrap {
+  padding: 1rem 1.5rem;
+}
+
+.emptyState {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.cellPrimary {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.cellSecondary {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.cellText {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  max-width: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.statusBadge {
+  display: inline-flex;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+}
+
+.statusCompleted {
+  background: #1f2937;
+  color: #4ade80;
+  border: 2px dotted #00ff00;
+}
+
+.statusInProgress {
+  background: #1f2937;
+  color: #86efac;
+  border: 2px dotted #10b981;
+}
+
+.statusPlanning {
+  background: #1f2937;
+  color: #d1d5db;
+  border: 2px dotted #4b5563;
+}
+
+.statusOnHold {
+  background: #1f2937;
+  color: #9ca3af;
+  border: 2px dotted #374151;
+}
+
+.techStackContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  max-width: 20rem;
+}
+
+.techBadge {
+  padding: 0.25rem 0.5rem;
+  background: #1f2937;
+  border: 2px dotted #374151;
+  color: #ffffff;
+  font-size: 0.75rem;
+}
+
+.techCount {
+  padding: 0.25rem 0.5rem;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.linkContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px rgba(0, 255, 0, 0.533);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #00aa00;
+}
+
+.actionContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.actionButton {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px rgba(0, 255, 0, 0.533);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.actionButton:hover {
+  color: #00aa00;
+}
+
+.iconCell {
+  font-size: 1.5rem;
+}

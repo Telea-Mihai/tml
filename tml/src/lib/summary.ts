@@ -1,28 +1,43 @@
-'use server';
+'use server';  
 
-import {Category, getCategoryById} from '@/lib/categoryInter';
-import {Project, getProjectsByIds} from '@/lib/projectInter';
+import { getProjectsByIds } from "./projectInter";
+import { getCategoryById } from "./categoryInter";
 
 export type Summary = {
-    catId: number;
-    catName: string;
-    nrProjects: number;
-    projects: String[] | null;
+    title:string,
+    counted:number,
+    projects: string[],
 }
 
-export async function getSummary(catId: number): Promise<Summary | null> {
-    const category: Category | null =  await getCategoryById(catId);
+export async function generateSummary(categoryId:number): Promise<Summary|null> {
+    const category = await getCategoryById(categoryId);
     if (!category) {
         return null;
     }
+    
+    if(!category.projects || category.projects.length === 0) {
+        return {
+            title: category.name,
+            counted: 0,
+            projects: [],
+        };
+    }
+    
+    const projects = await getProjectsByIds(category.projects);
+    
+    if(!projects || projects.length === 0) {
+        return {
+            title: category.name,
+            counted: 0,
+            projects: [],
+        };
+    }   
+    const projectNames = projects.map(proj => proj.name);
 
-    const projects: Project[] | null = await getProjectsByIds(category.projects || []);
-    const projectNames: String[] | null = projects ? projects.map(proj => proj.name) : null;
-    const summary: Summary = {
-        catId: category.id,
-        catName: category.name,
-        nrProjects: projectNames ? projectNames.length : 0,
-        projects: projectNames
+    return {
+        title: category.name,
+        counted: projects.length,
+        projects: projectNames,
     };
-    return summary;
+
 }

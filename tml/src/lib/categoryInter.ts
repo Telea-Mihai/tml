@@ -3,6 +3,7 @@
 import {db} from '@/db/db';
 import { category } from '@/db/schema/category';
 import {eq} from 'drizzle-orm';
+import { ButtonHTMLAttributes } from 'react';
 
 export type Category = typeof category.$inferSelect;
 

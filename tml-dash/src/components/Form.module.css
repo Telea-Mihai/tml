@@ -1,0 +1,212 @@
+/* Shared form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #000000;
+  padding: 1.5rem;
+  border: 2px dotted #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2), inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.promptSymbol {
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px rgba(0, 255, 0, 0.533);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.gridGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .gridGroup {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #d1d5db;
+  margin-bottom: 0.25rem;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: #000000;
+  border: 2px dotted #374151;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #00ff00;
+  box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.2);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.flexInput {
+  flex: 1;
+}
+
+.addButton {
+  padding: 0.5rem 1rem;
+  background: #000000;
+  color: #00ff00;
+  border: 2px dotted #00ff00;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.addButton:hover {
+  background: #00ff00;
+  color: #000000;
+}
+
+.chipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: #1f2937;
+  border: 2px dotted #00ff00;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.removeButton {
+  color: #00ff00;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.removeButton:hover {
+  color: #00aa00;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: #1f2937;
+  border: 2px dotted #374151;
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 12rem;
+  overflow-y: auto;
+  padding: 0.5rem;
+  border: 2px dotted #374151;
+  background: #050505;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #e5e7eb;
+}
+
+.checkbox {
+  accent-color: #00ff00;
+  width: 1rem;
+  height: 1rem;
+}
+
+.helperText {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.primaryButton {
+  padding: 0.5rem 1rem;
+  background: #00ff00;
+  color: #000000;
+  border: 2px dotted #00ff00;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px rgba(0, 255, 0, 0.533);
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: #00aa00;
+}
+
+.primaryButton:disabled {
+  background: #064e3b;
+  color: #059669;
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+.secondaryButton {
+  padding: 0.5rem 1rem;
+  background: #000000;
+  color: #00ff00;
+  border: 2px dotted #00ff00;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.secondaryButton:hover {
+  background: #00ff00;
+  color: #000000;
+}
