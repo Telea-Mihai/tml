@@ -1,0 +1,22 @@
+.title{
+    font-family: var(--font-anonymous-pro), monospace;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: white;
+    animation-duration: 0.01s;
+    animation-name: boxflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes boxflicker {
+    from {
+        box-shadow: 1px 0 0 #722d5b, -2px 0 0 #57a250;
+    }
+
+    to {
+        box-shadow: 2px 0.5px 2px #a94a89, -1px -0.5px 2px #4fa048;
+    }
+}

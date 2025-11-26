@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Anonymous_Pro } from "next/font/google";
+import { IBM_Plex_Mono, Anonymous_Pro, Just_Another_Hand } from "next/font/google";
 import "./globals.css";
 
 const ibm_Plex_Mono = IBM_Plex_Mono({
@@ -12,6 +12,12 @@ const anonymous_Pro = Anonymous_Pro({
   subsets: ["latin"],
   variable: "--font-anonymous-pro",
   weight: ["400", "700"],
+});
+
+const just_Another_Hand = Just_Another_Hand({
+  subsets: ["latin"],
+  variable: "--font-just-another-hand",
+  weight: ["400", "400"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ibm_Plex_Mono.variable} ${anonymous_Pro.variable} antialiased`}
+        className={`${ibm_Plex_Mono.variable} ${anonymous_Pro.variable} ${just_Another_Hand.variable} antialiased`}
       >
         {children}
       </body>

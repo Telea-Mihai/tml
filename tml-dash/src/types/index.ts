@@ -3,6 +3,7 @@ export interface Category {
   name: string;
   projects?: number[];
   icon?: string;
+  color?: string;
 }
 
 export interface Project {

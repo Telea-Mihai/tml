@@ -4,5 +4,6 @@ export const category = pgTable("categories", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   projects: integer("projects").array(),
-  icon: text("icon")
+  icon: text("icon"),
+  color: text("color"),
 });

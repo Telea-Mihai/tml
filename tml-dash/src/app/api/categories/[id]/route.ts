@@ -41,6 +41,7 @@ export async function PUT(
         name: body.name,
         projects: body.projects || [],
         icon: body.icon || null,
+        color: body.color || null,
       })
       .where(eq(category.id, parseInt(id)))
       .returning();

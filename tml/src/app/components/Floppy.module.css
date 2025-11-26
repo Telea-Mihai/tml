@@ -1,0 +1,208 @@
+.cont{
+    width: 220px;
+	height: 250px;
+    position: relative;
+    z-index: 2000;
+}
+
+.floppy {
+    width: 220px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+	gap: 20px;
+
+	background: var(--floppy-color, #1f2c44);
+	/* Realistic plastic texture with subtle grain */
+	background-image: 
+		repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.03) 2px,
+			rgba(0, 0, 0, 0.03) 4px
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.02) 2px,
+			rgba(0, 0, 0, 0.02) 4px
+		),
+		linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.1) 0%,
+			transparent 40%,
+			transparent 60%,
+			rgba(0, 0, 0, 0.15) 100%
+		);
+	background-blend-mode: normal;
+
+	clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
+    border-radius: 0.2rem;
+    transform: translateY(0) translateX(0) scale(1) rotate(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	
+	/* Realistic depth with layered shadows */
+	box-shadow: 
+		inset -2px -2px 4px rgba(0, 0, 0, 0.3),
+		2px 4px 8px rgba(0, 0, 0, 0.3),
+		4px 8px 16px rgba(0, 0, 0, 0.2);
+	
+	/* Subtle edge highlight for dimensionality */
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.floppy:not(.loaded):not(.returning):hover{
+    transform: translateY(-35px) scale(1.02);
+    z-index: 20;
+	box-shadow: 
+		inset -2px -2px 4px rgba(0, 0, 0, 0.3),
+		3px 6px 12px rgba(0, 0, 0, 0.4),
+		6px 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+
+.floppy.loaded,
+.floppy.returning{
+    position: fixed;
+    z-index: 2000;
+}
+
+.floppy.loaded{
+    animation: load 3.1s forwards;
+}
+
+.floppy.returning{
+    animation: putBack 3.1s forwards;
+}
+
+.shutter{
+    background: linear-gradient(
+		180deg,
+		#888 0%,
+		#666 50%,
+		#555 100%
+	);
+	/* Brushed metal texture */
+	background-image: 
+		linear-gradient(
+			180deg,
+			#888 0%,
+			#666 50%,
+			#555 100%
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 1px,
+			rgba(255, 255, 255, 0.03) 1px,
+			rgba(255, 255, 255, 0.03) 2px
+		);
+    width: 70%;
+    height: 30%;
+    border-radius: 0.2rem;
+	/* Metal depth and shine */
+	box-shadow: 
+		inset 0 2px 4px rgba(255, 255, 255, 0.3),
+		inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+		0 2px 4px rgba(0, 0, 0, 0.4);
+	border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.shutter::after{
+    content:"";
+    background-color: var(--floppy-color, #1f2c44);
+    position: absolute;
+    top:5px;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 60px;
+    border-radius: 0.2rem;
+	/* Inset window with depth */
+	box-shadow: 
+		inset 1px 1px 3px rgba(0, 0, 0, 0.6),
+		inset -1px -1px 2px rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.label{
+    background-color: white;
+	/* Paper texture with subtle grain */
+	background-image: 
+		repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 1px,
+			rgba(0, 0, 0, 0.015) 1px,
+			rgba(0, 0, 0, 0.015) 2px
+		),
+		repeating-linear-gradient(
+			90deg,
+			transparent,
+			transparent 1px,
+			rgba(0, 0, 0, 0.015) 1px,
+			rgba(0, 0, 0, 0.015) 2px
+		),
+		linear-gradient(
+			135deg,
+			rgba(255, 255, 255, 0.8) 0%,
+			rgba(245, 245, 245, 1) 100%
+		);
+    color:black;
+    width: 80%;
+    height: 50%;
+    text-align: center;
+    font-family: var(--font-just-another-hand);
+    font-size: xx-large;
+	/* Slightly recessed label with subtle shadow */
+	box-shadow: 
+		inset 0 1px 2px rgba(0, 0, 0, 0.1),
+		0 1px 0 rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.label .header{
+    font-family: var(--font-ibm-plex-mono);
+    font-size: small;
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+    background-color: #e23e3e;
+    color: white;
+    margin-bottom: 5px;
+}
+
+@keyframes load{
+    0%{
+        animation-timing-function: cubic-bezier(0.55, 0.05, 0.2, 1);
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    }
+    45%{
+        animation-timing-function: cubic-bezier(0.3, 0.05, 0.1, 1);
+        transform: translateY(-22vh) translateX(320px) rotate(-5deg) scale(1.02);
+    }
+    100%{
+        transform: translateY(110vh) translateX(530px) rotate(18deg) scale(0.95);
+    }
+}
+
+@keyframes putBack{
+    0%{
+        transform: translateY(110vh) translateX(430px) rotate(18deg) scale(0.95);
+    }   
+    20%{
+        transform: translateY(110vh) translateX(430px) rotate(18deg) scale(0.95);
+    }
+    55%{
+        animation-timing-function: cubic-bezier(0.55, 0.05, 0.2, 1);
+        transform: translateY(-22vh) translateX(170px) rotate(-5deg) scale(1.02);
+    }
+    100%{
+        animation-timing-function: cubic-bezier(0.3, 0.05, 0.1, 1);
+        transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+    }
+}

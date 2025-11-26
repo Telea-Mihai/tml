@@ -16,6 +16,7 @@ export default function CategoryForm({ category, availableProjects, onSubmit, on
     name: category?.name || '',
     projects: category?.projects || [],
     icon: category?.icon || '',
+    color: category?.color || '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,6 +25,7 @@ export default function CategoryForm({ category, availableProjects, onSubmit, on
       name: category?.name || '',
       projects: category?.projects || [],
       icon: category?.icon || '',
+      color: category?.color || '',
     });
   }, [category]);
 
@@ -80,6 +82,17 @@ export default function CategoryForm({ category, availableProjects, onSubmit, on
           onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
           className={styles.input}
           placeholder="/globe.svg"
+        />
+        <label htmlFor="color" className={styles.label}>
+          Color
+        </label>
+        <input
+          type="text"
+          id="color"
+          value={formData.color}
+          onChange={(e) => setFormData({ ...formData, color: e.target.value })}
+          className={styles.input}
+          placeholder="#000000"
         />
       </div>
 

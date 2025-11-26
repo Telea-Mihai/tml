@@ -3,3 +3,125 @@
 :root {
     font-family: var(--font-ibm-plex-mono), monospace;
 }
+
+html,
+body {
+    height: 100%;
+    min-width: 100vw;
+    margin: 0;
+    overflow: hidden;
+}
+
+.noise::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.noiseAnimation::before {
+    animation: noiseAnim 0.2s steps(10) infinite;
+}
+
+@keyframes noiseAnim {
+    0% {
+        background-position: 10% 10%;
+    }
+
+    10% {
+        background-position: 5% 5%;
+    }
+
+    20% {
+        background-position: -10% 5%;
+    }
+
+    30% {
+        background-position: 5% -10%;
+    }
+
+    40% {
+        background-position: -5% 15%;
+    }
+
+    50% {
+        background-position: -10% 5%;
+    }
+
+    60% {
+        background-position: 15% 0%;
+    }
+
+    70% {
+        background-position: 0% 10%;
+    }
+
+    80% {
+        background-position: -15% 0%;
+    }
+
+    90% {
+        background-position: 10% 5%;
+    }
+
+    100% {
+        background-position: 10% 10%;
+    }
+}
+
+.screenGlare{
+    background: radial-gradient(circle at 20% 20%, rgba(183, 198, 192, 0.15), transparent 55%);
+}
+
+.scanLines{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(80, 107, 95, 0.176) 40%, rgba(0, 0, 0, 0.85) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+    transform: translateY(-110%);
+    animation: coverLoad 6s steps(8, jump-both) infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.textFlicker {
+    text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+    letter-spacing: 0.125em;
+    animation-duration: 0.01s;
+    animation-name: textflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.boxFlicker {
+    box-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
+    animation-duration: 0.01s;
+    animation-name: boxflicker;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes textflicker {
+    from {
+        text-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+    }
+
+    to {
+        text-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+}
+
+@keyframes boxflicker {
+    from {
+        box-shadow: 1px 0 0 #ea36af, -2px 0 0 #75fa69;
+    }
+
+    to {
+        box-shadow: 2px 0.5px 2px #ea36af, -1px -0.5px 2px #75fa69;
+    }
+}

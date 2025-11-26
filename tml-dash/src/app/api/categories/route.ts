@@ -23,6 +23,7 @@ export async function POST(request: Request) {
       name: body.name,
       projects: body.projects || [],
       icon: body.icon || null,
+      color: body.color || null,
     }).returning();
     
     return NextResponse.json(newCategory, { status: 201 });

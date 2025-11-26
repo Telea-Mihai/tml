@@ -1,0 +1,31 @@
+
+.button{
+    font-size: x-large;
+    text-decoration: underline;
+    width: fit-content;
+    color: var(--button-color);
+}
+
+.button:hover::before{
+    content:">";
+}
+
+.selected::after{
+    content:"";
+    display: inline-block;
+    height: 15px;
+    width: 10px;
+    background-color:var(--button-color);
+    margin-left: 0.5rem;
+    vertical-align: -2px;
+    animation: blink 2s infinite;
+}
+
+
+@keyframes blink {
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    99% { opacity: 0; }
+    100% { opacity: 1; }
+}
