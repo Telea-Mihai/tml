@@ -5,8 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { Category, getCategoryById } from "@/lib/categoryInter";
 import { Project, getProjectById, getProjectsByIds } from "@/lib/projectInter";
 import './styles.css'
-import Title from "../components/Title";
-import Button from "../components/Button";
+import Title from "../../components/Title";
+import Button from "../../components/Button";
 
 
 export default function viewPage() {

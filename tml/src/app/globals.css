@@ -6,7 +6,7 @@
 
 html,
 body {
-    height: 100%;
+    min-height: 100vh;
     min-width: 100vw;
     margin: 0;
     overflow: hidden;
@@ -104,6 +104,18 @@ body {
     animation-name: boxflicker;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+@media (max-width: 768px) {
+    .textFlicker {
+        animation: none;
+        
+    }
+
+    .boxFlicker {
+        animation: none;
+        /* box-shadow: 0.03rem 0 0.03rem #ea36af, -0.06rem 0 0.03rem #75fa69; */
+    }
 }
 
 @keyframes textflicker {

@@ -29,3 +29,15 @@
     99% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+@media (max-width: 768px) {
+    .button {
+        font-size: small;
+    }
+
+    .selected::after {
+        height: 10px;
+        width: 6px;
+        margin-left: 0.3rem;
+    }
+}
