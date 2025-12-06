@@ -9,7 +9,7 @@ This repository contains two main applications:
 ### tml
 The public portfolio website built with Next.js. This is the main site that visitors will see, showcasing projects, skills, and other portfolio content.
 
-### tml-dash (Coming Soon)
+### tml-dash
 An administrative dashboard for managing the portfolio website. This tool will allow content editing, project additions, and database management without direct code changes.
 
 ## Tech Stack
