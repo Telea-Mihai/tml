@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Category, getCategoryById } from "@/lib/categoryInter";
 import { Project, getProjectById, getProjectsByIds } from "@/lib/projectInter";
@@ -9,7 +9,7 @@ import Title from "../../components/Title";
 import Button from "../../components/Button";
 
 
-export default function viewPage() {
+function ViewContent() {
   const searchParams = useSearchParams();
   const [category, setCategory] = useState<Category | null>(null);
   const [projects, setProjects] = useState<Project[] | null>(null);
@@ -17,6 +17,7 @@ export default function viewPage() {
   const [loading, setLoading] = useState(false);
   const dotSequence = [".", "..", "...", ""];
   const [dotIndex, setDotIndex] = useState(0);
+  const [showContent, setShowContent] = useState(false);
 
   async function loadPage() {
     const id = searchParams.get('id');
@@ -35,6 +36,7 @@ export default function viewPage() {
     const proj = await getProjectById(id);
     setLoadedProject(proj);
     setLoading(true);
+    setShowContent(true);
     window.setTimeout(() => setLoading(false), 3100);
   }
 
@@ -50,8 +52,11 @@ export default function viewPage() {
     return () => clearInterval(interval);
   }, []);
 
-  return <main className="viewLayout textFlicker screenGlare noise">
+  return <main className={`viewLayout textFlicker screenGlare noise ${showContent ? 'showContent' : ''}`}>
     <div className="scanLines"/>
+    <button className="mobileToggle" onClick={() => setShowContent(!showContent)}>
+      {showContent ? '< Menu' : 'Content >'}
+    </button>
     {category ? <div className="sideBar">
       <div className="flex flex-col gap-[0.2rem]">
         <Title content={`>${category.name.toUpperCase()}`} color={category.color!} />
@@ -111,4 +116,17 @@ export default function viewPage() {
       </div>) : <div className="flex justify-center items-center w-full h-full">No project loaded</div>
     }
   </main>;
+}
+
+export default function ViewPage() {
+  return (
+    <Suspense fallback={
+      <main className="viewLayout textFlicker screenGlare noise">
+        <div className="scanLines"/>
+        <div className="flex justify-center items-center w-full h-full">Loading...</div>
+      </main>
+    }>
+      <ViewContent />
+    </Suspense>
+  );
 }

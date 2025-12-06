@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import '../view/styles.css';
 import Title from "../../components/Title";
@@ -91,12 +91,13 @@ const specialFloppyData: any = {
   }
 };
 
-export default function AboutMePage() {
+function AboutMeContent() {
   const searchParams = useSearchParams();
   const [specialType, setSpecialType] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const dotSequence = [".", "..", "...", ""];
   const [dotIndex, setDotIndex] = useState(0);
+  const [showContent, setShowContent] = useState(true);
 
   useEffect(() => {
     const type = searchParams.get('type');
@@ -223,14 +224,6 @@ export default function AboutMePage() {
                 <h2 className="underline mb-[0.5rem]">GitHub:</h2>
                 <a href={data.content.github} target="_blank" rel="noopener noreferrer" className="underline text-blue-500 text-[1.2rem]">{data.content.github}</a>
               </div>
-              <div>
-                <h2 className="underline mb-[0.5rem]">Twitter:</h2>
-                <a href={data.content.twitter} target="_blank" rel="noopener noreferrer" className="underline text-blue-500 text-[1.2rem]">{data.content.twitter}</a>
-              </div>
-              <div>
-                <h2 className="underline mb-[0.5rem]">Website:</h2>
-                <a href={data.content.website} target="_blank" rel="noopener noreferrer" className="underline text-blue-500 text-[1.2rem]">{data.content.website}</a>
-              </div>
             </div>
           </div>
         );
@@ -238,8 +231,11 @@ export default function AboutMePage() {
   };
 
   return (
-    <main className="viewLayout textFlicker screenGlare noise">
+    <main className={`viewLayout textFlicker screenGlare noise ${showContent ? 'showContent' : ''}`}>
       <div className="scanLines" />
+      <button className="mobileToggle" onClick={() => setShowContent(!showContent)}>
+        {showContent ? '< Menu' : 'Content >'}
+      </button>
       {specialType ? (
         <div className="sideBar">
           <div className="flex flex-col gap-[0.2rem]">
@@ -259,5 +255,18 @@ export default function AboutMePage() {
         renderContent()
       )}
     </main>
+  );
+}
+
+export default function AboutMePage() {
+  return (
+    <Suspense fallback={
+      <main className="viewLayout textFlicker screenGlare noise showContent">
+        <div className="scanLines" />
+        <div className="flex justify-center items-center w-full h-full">Loading...</div>
+      </main>
+    }>
+      <AboutMeContent />
+    </Suspense>
   );
 }

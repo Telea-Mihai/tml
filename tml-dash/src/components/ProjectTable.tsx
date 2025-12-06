@@ -1,6 +1,6 @@
 'use client';
 
-import type { Project } from '@/types';
+import type { Project } from '@/lib/projects';
 
 interface ProjectTableProps {
   projects: Project[];

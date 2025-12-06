@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { Category, Project, CategoryFormData, ProjectFormData } from '@/types';
+import type { CategoryFormData, ProjectFormData } from '@/types';
+import { createProject, deleteProject, getAllProjects, Project, updateProject } from '@/lib/projects';
+import { Category, createCategory, deleteCategory, getAllCategories, updateCategory } from '@/lib/categories';
 import CategoryForm from '@/components/CategoryForm';
-import ProjectForm from '@/components/ProjectForm';
+import ProjectForm from '@/components/ProjectForm';    
 import CategoryTable from '@/components/CategoryTable';
 import ProjectTable from '@/components/ProjectTable';
 
@@ -27,11 +29,11 @@ export default function Home() {
     setLoading(true);
     try {
       const [categoriesRes, projectsRes] = await Promise.all([
-        fetch('/api/categories'),
-        fetch('/api/projects'),
+        getAllCategories(),
+        getAllProjects(),
       ]);
-      const categoriesData = await categoriesRes.json();
-      const projectsData = await projectsRes.json();
+      const categoriesData = await categoriesRes;
+      const projectsData = await projectsRes;
       setCategories(categoriesData);
       setProjects(projectsData);
     } catch (error) {
@@ -42,13 +44,9 @@ export default function Home() {
   };
 
   const handleCreateCategory = async (data: CategoryFormData) => {
-    const response = await fetch('/api/categories', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    const response = await createCategory(data);
     
-    if (response.ok) {
+    if (response) {
       await fetchData();
       setShowCategoryForm(false);
     }
@@ -57,13 +55,8 @@ export default function Home() {
   const handleUpdateCategory = async (data: CategoryFormData) => {
     if (!editingCategory) return;
     
-    const response = await fetch(`/api/categories/${editingCategory.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    
-    if (response.ok) {
+    const response = await updateCategory(editingCategory.id, data);
+    if (response) {
       await fetchData();
       setEditingCategory(undefined);
       setShowCategoryForm(false);
@@ -73,23 +66,15 @@ export default function Home() {
   const handleDeleteCategory = async (id: number) => {
     if (!confirm('Are you sure you want to delete this category?')) return;
     
-    const response = await fetch(`/api/categories/${id}`, {
-      method: 'DELETE',
-    });
+    await deleteCategory(id);
+    await fetchData();
     
-    if (response.ok) {
-      await fetchData();
-    }
   };
 
   const handleCreateProject = async (data: ProjectFormData) => {
-    const response = await fetch('/api/projects', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+      const response = await createProject(data);
     
-    if (response.ok) {
+    if (response) {
       await fetchData();
       setShowProjectForm(false);
     }
@@ -98,13 +83,9 @@ export default function Home() {
   const handleUpdateProject = async (data: ProjectFormData) => {
     if (!editingProject) return;
     
-    const response = await fetch(`/api/projects/${editingProject.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    const response = await updateProject(editingProject.id, data);
     
-    if (response.ok) {
+    if (response) {
       await fetchData();
       setEditingProject(undefined);
       setShowProjectForm(false);
@@ -114,13 +95,8 @@ export default function Home() {
   const handleDeleteProject = async (id: number) => {
     if (!confirm('Are you sure you want to delete this project?')) return;
     
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'DELETE',
-    });
-    
-    if (response.ok) {
-      await fetchData();
-    }
+    await deleteProject(id);
+    await fetchData();
   };
 
   const handleEditCategory = (category: Category) => {
@@ -147,7 +123,7 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white"><span className="text-green-500 terminal-glow">{'>'}</span> Dashboard</h1>
+          <h1 className="text-3xl font-bold text-white"><span className="text-green-500">{'>'}</span> Dashboard</h1>
           <p className="mt-2 text-sm text-gray-400">Manage your categories and projects</p>
         </div>
 
@@ -158,7 +134,7 @@ export default function Home() {
               onClick={() => setActiveTab('categories')}
               className={`${
                 activeTab === 'categories'
-                  ? 'border-green-500 text-white terminal-glow'
+                  ? 'border-green-500 text-white'
                   : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'
               } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
@@ -168,7 +144,7 @@ export default function Home() {
               onClick={() => setActiveTab('projects')}
               className={`${
                 activeTab === 'projects'
-                  ? 'border-green-500 text-white terminal-glow'
+                  ? 'border-green-500 text-white '
                   : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'
               } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm`}
             >
@@ -179,7 +155,7 @@ export default function Home() {
 
         {loading ? (
           <div className="text-center py-12">
-            <p className="text-green-500 terminal-glow">Loading<span className="cursor">_</span></p>
+            <p className="text-green-500 ">Loading<span className="cursor">_</span></p>
           </div>
         ) : (
           <>
@@ -243,7 +219,5 @@ export default function Home() {
         )}$
       </div>
     </div>
-
-
   );
-}
+}   

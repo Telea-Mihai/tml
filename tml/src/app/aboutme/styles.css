@@ -4,7 +4,7 @@
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 100vh;
+    height: 100dvh;
     overflow-x: visible;
     overflow-y: hidden;
     background-color: #000000;

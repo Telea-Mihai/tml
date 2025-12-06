@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import type { Project, ProjectFormData } from '@/types';
+import type { ProjectFormData } from '@/types';
+import { Project } from '@/lib/projects';
 import styles from './Form.module.css';
 
 interface ProjectFormProps {
@@ -123,7 +124,7 @@ export default function ProjectForm({ project, onSubmit, onCancel }: ProjectForm
         <textarea
           id="description"
           rows={3}
-          value={formData.description}
+          value={formData.description!}
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           className="w-full px-3 py-2 bg-black border-2 border-dotted border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
         />
@@ -136,7 +137,7 @@ export default function ProjectForm({ project, onSubmit, onCancel }: ProjectForm
         <input
           type="text"
           id="myRole"
-          value={formData.myRole}
+          value={formData.myRole!}
           onChange={(e) => setFormData({ ...formData, myRole: e.target.value })}
           className="w-full px-3 py-2 bg-black border-2 border-dotted border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
           placeholder="e.g., Full Stack Developer"
@@ -151,7 +152,7 @@ export default function ProjectForm({ project, onSubmit, onCancel }: ProjectForm
           <input
             type="url"
             id="linkGit"
-            value={formData.linkGit}
+            value={formData.linkGit!}
             onChange={(e) => setFormData({ ...formData, linkGit: e.target.value })}
             className="w-full px-3 py-2 bg-black border-2 border-dotted border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="https://github.com/..."
@@ -165,7 +166,7 @@ export default function ProjectForm({ project, onSubmit, onCancel }: ProjectForm
           <input
             type="url"
             id="linkDemo"
-            value={formData.linkDemo}
+            value={formData.linkDemo!}
             onChange={(e) => setFormData({ ...formData, linkDemo: e.target.value })}
             className="w-full px-3 py-2 bg-black border-2 border-dotted border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
             placeholder="https://..."

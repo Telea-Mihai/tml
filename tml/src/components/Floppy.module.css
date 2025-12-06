@@ -175,11 +175,8 @@
 	border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 768px) {
-    .label {
-        font-size: medium;
-    }
-}
+
+
 
 .label .header{
     font-family: var(--font-ibm-plex-mono);
@@ -198,5 +195,9 @@
         padding: 2px;
         margin-bottom: 2px;
     }
+
+	.label {
+    	font-size: medium;
+	}
 }
 

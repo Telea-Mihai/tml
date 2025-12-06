@@ -247,7 +247,7 @@ export default function Home() {
             </div>
 
             <div className="boxWall" aria-hidden="true">
-              <h1 className="selected">Projects</h1>
+              <h1>Projects</h1>
             </div>
           </div>
           <div className={`Category drawer ${aboutDrawerOpen ? 'open' : ''}`}>
@@ -259,51 +259,61 @@ export default function Home() {
               <div className="handleGrip"></div>
             </button>
             <div className="Deck">
-              <Floppy 
-                text="?Who am I"
-                color="#2d4a7c"
-                isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
-                onDragEnd={(_, info, element) => handleSpecialDragEnd("whoami", info, element)}
-                isInserting={insertingSpecialId === "whoami"}
-                isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "whoami"}
-                loaded={selectedSpecial === "whoami" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
-              />
-              <Floppy 
-                text="Experience"
-                color="#4a7c2d"
-                isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
-                onDragEnd={(_, info, element) => handleSpecialDragEnd("experience", info, element)}
-                isInserting={insertingSpecialId === "experience"}
-                isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "experience"}
-                loaded={selectedSpecial === "experience" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
-              />
-              <Floppy 
-                text="Education"
-                color="#7c2d4a"
-                isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
-                onDragEnd={(_, info, element) => handleSpecialDragEnd("education", info, element)}
-                isInserting={insertingSpecialId === "education"}
-                isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "education"}
-                loaded={selectedSpecial === "education" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
-              />
-              <Floppy 
-                text="Achievements"
-                color="#7c5a2d"
-                isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
-                onDragEnd={(_, info, element) => handleSpecialDragEnd("achievements", info, element)}
-                isInserting={insertingSpecialId === "achievements"}
-                isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "achievements"}
-                loaded={selectedSpecial === "achievements" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
-              />
-              <Floppy 
-                text="Contact" 
-                color="#1f2c44" 
-                isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
-                onDragEnd={(_, info, element) => handleSpecialDragEnd("contact", info, element)}
-                isInserting={insertingSpecialId === "contact"}
-                isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "contact"}
-                loaded={selectedSpecial === "contact" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
-              />
+              {insertedSpecialId !== "whoami" || isEjecting ? (
+                <Floppy 
+                  text="Who am I?"
+                  color="#2d4a7c"
+                  isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
+                  onDragEnd={(_, info, element) => handleSpecialDragEnd("whoami", info, element)}
+                  isInserting={insertingSpecialId === "whoami"}
+                  isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "whoami"}
+                  loaded={selectedSpecial === "whoami" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
+                />
+              ) : null}
+              {insertedSpecialId !== "experience" || isEjecting ? (
+                <Floppy 
+                  text="Experience"
+                  color="#4a7c2d"
+                  isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
+                  onDragEnd={(_, info, element) => handleSpecialDragEnd("experience", info, element)}
+                  isInserting={insertingSpecialId === "experience"}
+                  isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "experience"}
+                  loaded={selectedSpecial === "experience" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
+                />
+              ) : null}
+              {insertedSpecialId !== "education" || isEjecting ? (
+                <Floppy 
+                  text="Education"
+                  color="#7c2d4a"
+                  isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
+                  onDragEnd={(_, info, element) => handleSpecialDragEnd("education", info, element)}
+                  isInserting={insertingSpecialId === "education"}
+                  isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "education"}
+                  loaded={selectedSpecial === "education" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
+                />
+              ) : null}
+              {insertedSpecialId !== "achievements" || isEjecting ? (
+                <Floppy 
+                  text="Achievements"
+                  color="#7c5a2d"
+                  isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
+                  onDragEnd={(_, info, element) => handleSpecialDragEnd("achievements", info, element)}
+                  isInserting={insertingSpecialId === "achievements"}
+                  isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "achievements"}
+                  loaded={selectedSpecial === "achievements" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
+                />
+              ) : null}
+              {insertedSpecialId !== "contact" || isEjecting ? (
+                <Floppy 
+                  text="Contact" 
+                  color="#1f2c44" 
+                  isDraggable={insertedDiskId === null && insertingDiskId === null && insertedSpecialId === null && insertingSpecialId === null}
+                  onDragEnd={(_, info, element) => handleSpecialDragEnd("contact", info, element)}
+                  isInserting={insertingSpecialId === "contact"}
+                  isEjecting={isEjecting && insertedSpecialId === null && selectedSpecial === "contact"}
+                  loaded={selectedSpecial === "contact" && !selectedCatId && insertedSpecialId === null && insertingSpecialId === null}
+                />
+              ) : null}
             </div>
             <div className="boxWall" aria-hidden="true" >
               <h1>About me</h1>
