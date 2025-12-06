@@ -52,7 +52,7 @@ cd tml
 npm run dev
 ```
 
-### Running the Dashboard (Coming Soon)
+### Running the Dashboard
 
 ```bash
 cd tml-dash
